@@ -20,7 +20,7 @@ import pay.one.faster.requester.infra.web.opentracing.OpenTracingHeaders;
 import reactor.core.publisher.Mono;
 
 @Configuration
-public class RequesterRouter {
+public class RequesterConfigRouter {
 
   @Bean(name = "requesterRouter")
   RouterFunction<ServerResponse> requesterRouter(RequesterService requesterService) {

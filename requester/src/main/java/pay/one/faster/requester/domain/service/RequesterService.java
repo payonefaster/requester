@@ -17,6 +17,7 @@ public class RequesterService {
   }
 
   public Mono<Requester> register(RegisterRequester registerRequester) {
+    System.out.println("register!!");
     return this.requesterRepository.register(registerRequester);
   }
 
