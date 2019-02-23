@@ -36,16 +36,17 @@ public class RequesterConfigRouter {
                 req -> {
                   Mono<RegisterRequester> request = req.bodyToMono(RegisterRequester.class);
                   final OpenTracingHeaders headers = new OpenTracingHeaders();
-//                  OpenTracingHeaders.options.forEach(
-//                      el -> headers.add(el, req.headers().header(el).get(0)));
+                  OpenTracingHeaders.options.forEach(
+                      el -> {
+                        if (!req.headers().header(el).isEmpty()) {
+                          headers.add(el, req.headers().header(el).get(0));
+                        }
+                      });
                   return created(UriComponentsBuilder.fromPath("/requesters/").build().toUri())
                       .contentType(MediaType.APPLICATION_JSON)
                       .body(
                           fromPublisher(
-                              request
-                                  .map(p -> p)
-                                  .flatMap(
-                                      requesterService::register),
+                              request.map(p -> p).flatMap(requesterService::register),
                               Requester.class));
                 }));
   }
