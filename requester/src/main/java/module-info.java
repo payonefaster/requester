@@ -5,10 +5,12 @@ open module requester {
   requires spring.boot;
   requires spring.boot.autoconfigure;
   requires spring.boot.starter.reactor.netty;
-  requires spring.boot.starter.data.cassandra.reactive;
-  requires spring.data.cassandra;
   requires spring.webflux;
   requires reactor.core;
   requires reactor.netty;
   requires jdk.unsupported;
+  requires spring.boot.starter.data.mongodb.reactive;
+  requires spring.data.mongodb;
+  requires spring.data.commons;
+  requires spring.web;
 }

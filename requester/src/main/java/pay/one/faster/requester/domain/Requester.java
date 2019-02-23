@@ -1,12 +1,13 @@
 package pay.one.faster.requester.domain;
 
-import org.springframework.data.cassandra.core.mapping.PrimaryKey;
-import org.springframework.data.cassandra.core.mapping.Table;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
-@Table
+@Document(collection = "requesters")
 public class Requester {
 
-  @PrimaryKey private String id;
+  @Id
+  private String id;
 
   private String name;
 
